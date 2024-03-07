@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="?attr/colorPrimary"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/habit_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/day1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Habit Name" />
+
+            <ImageView
+                android:id="@+id/edit_habit_btn"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="5dp"
+                android:src="@drawable/pencil"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/habit_name"
+                app:layout_constraintStart_toEndOf="@id/habit_name"
+                app:layout_constraintTop_toTopOf="@id/habit_name" />
+
+            <ImageView
+                android:id="@+id/day1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="4dp"
+                android:src="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/day2"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/habit_name" />
+
+            <ImageView
+                android:id="@+id/day2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="4dp"
+                android:src="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="@id/day1"
+                app:layout_constraintEnd_toStartOf="@id/day3"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toEndOf="@id/day1"
+                app:layout_constraintTop_toTopOf="@id/day1" />
+
+            <ImageView
+                android:id="@+id/day3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="4dp"
+                android:src="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="@id/day1"
+                app:layout_constraintEnd_toStartOf="@id/day4"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toEndOf="@id/day2"
+                app:layout_constraintTop_toTopOf="@id/day1" />
+
+            <ImageView
+                android:id="@+id/day4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="4dp"
+                android:src="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="@id/day1"
+                app:layout_constraintEnd_toStartOf="@id/day5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toEndOf="@id/day3"
+                app:layout_constraintTop_toTopOf="@id/day1" />
+
+            <ImageView
+                android:id="@+id/day5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="4dp"
+                android:src="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="@id/day1"
+                app:layout_constraintEnd_toStartOf="@id/day6"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toEndOf="@id/day4"
+                app:layout_constraintTop_toTopOf="@id/day1" />
+
+            <ImageView
+                android:id="@+id/day6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:src="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="@id/day1"
+                app:layout_constraintEnd_toStartOf="@id/day7"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toEndOf="@id/day5"
+                app:layout_constraintTop_toTopOf="@id/day1" />
+
+            <ImageView
+                android:id="@+id/day7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="4dp"
+                android:src="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="@id/day1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toEndOf="@id/day6"
+                app:layout_constraintTop_toTopOf="@id/day1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

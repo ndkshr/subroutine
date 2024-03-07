@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!--    My Dark Colors    -->
+    <color name="rich_dark">#0D1B1E</color>
+    <color name="lunar_green">#2E3D34</color>
+    <color name="coral_reef">#C3B59C</color>
+    <color name="verdigris_green_brown">#68623A</color>
+    <color name="siam_green">#545A4D</color>
+
+    <!--    My Light Colors    -->
+    <color name="vintage_beige">#EADFB4</color>
+    <color name="bombay_white">#B4B5BE</color>
+    <color name="dark_outer_space">#333738</color>
+    <color name="driftwood_yellow">#B18742</color>
+    <color name="salt_box_purple">#635B6C</color>
+
+
+    <!--    Item Colors    -->
+    <color name="engineering_red">#D00000</color>
+    <color name="selective_yellow">#ffba08</color>
+    <color name="steel_blue">#3f88C5</color>
+    <color name="mantis_green">#71B340</color>
+    <color name="syracuse_orange">#D45113</color>
+    <color name="turquoise">#4CE0D2</color>
+    <color name="tang_blue">#2B59C3</color>
+    <color name="mauve">#BAA5FF</color>
+
+</resources>

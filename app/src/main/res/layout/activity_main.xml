@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.MainActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/app_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:backgroundTint="?attr/colorPrimaryDark"
+            android:elevation="10dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/toolbar">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:elevation="12dp"
+                android:src="@drawable/subroutine" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="?attr/colorPrimaryDark"
+            android:elevation="10dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/toolbar">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:elevation="12dp"
+                android:src="@drawable/plus" />
+        </androidx.cardview.widget.CardView>
+
+        <!--END OF TOOLBAR-->
+
+        <TextView
+            style="@style/DayText"
+            android:id="@+id/day1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@id/day2_text"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:text="SUN\n28" />
+
+        <TextView
+            style="@style/DayText"
+            android:id="@+id/day2_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/day1_text"
+            app:layout_constraintEnd_toStartOf="@id/day3_text"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@id/day1_text"
+            app:layout_constraintTop_toTopOf="@id/day1_text"
+            tools:text="SAT\n27" />
+
+        <TextView
+            style="@style/DayText"
+            android:id="@+id/day3_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/circle"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/day1_text"
+            app:layout_constraintEnd_toStartOf="@id/day4_text"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@id/day2_text"
+            app:layout_constraintTop_toTopOf="@id/day1_text"
+            tools:text="FRI\n26" />
+
+        <TextView
+            style="@style/DayText"
+            android:id="@+id/day4_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/day1_text"
+            app:layout_constraintEnd_toStartOf="@id/day5_text"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@id/day3_text"
+            app:layout_constraintTop_toTopOf="@id/day1_text"
+            tools:text="THU\n25" />
+
+        <TextView
+            style="@style/DayText"
+            android:id="@+id/day5_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/day1_text"
+            app:layout_constraintEnd_toStartOf="@id/day6_text"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@id/day4_text"
+            app:layout_constraintTop_toTopOf="@id/day1_text"
+            tools:text="WED\n24" />
+
+        <TextView
+            style="@style/DayText"
+            android:id="@+id/day6_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/day1_text"
+            app:layout_constraintEnd_toStartOf="@id/day7_text"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@id/day5_text"
+            app:layout_constraintTop_toTopOf="@id/day1_text"
+            tools:text="TUE\n23" />
+
+        <TextView
+            style="@style/DayText"
+            android:id="@+id/day7_text"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@id/day1_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@id/day6_text"
+            app:layout_constraintTop_toTopOf="@id/day1_text"
+            tools:text="MON\n22" />
+
+        <!--  END OF DAY ITEMS  -->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/habits_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/day7_text"
+            tools:itemCount="5"
+            tools:listitem="@layout/habit_item_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

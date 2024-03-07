@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Subroutine" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <item name="colorPrimary">@color/rich_dark</item>
+        <item name="colorOnPrimary">@color/lunar_green</item>
+        <item name="colorPrimaryDark">@color/vintage_beige</item>
+        <item name="android:colorBackground">@color/lunar_green</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+    </style>
+</resources>

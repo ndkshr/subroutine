@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:src="@drawable/x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/habit_name_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Habit Name"
+            android:textColorHint="?attr/colorPrimaryDark"
+            app:boxStrokeColor="?attr/colorPrimaryDark"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat"
+            app:hintTextColor="?attr/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@id/close">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/habit_name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/labels_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/habit_name_parent"
+            app:spanCount="2"
+            tools:itemCount="4"
+            tools:listitem="@layout/color_picker_item" />
+
+        <TextView
+            android:id="@+id/time_picker_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Pick a time for reminder"
+            android:textColor="?attr/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/time_picker_switch"
+            app:layout_constraintTop_toTopOf="@id/time_picker_switch" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:checked="true"
+            app:layout_constraintTop_toBottomOf="@id/labels_rv"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/time_picker_switch"
+            app:thumbTint="?attr/colorPrimaryDark"
+            app:trackTint="?attr/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TimePicker
+            android:id="@+id/reminder_time_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="visible"
+            tools:visibility="visible"
+            android:numbersBackgroundColor="?attr/colorPrimary"
+            android:numbersSelectorColor="?attr/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@id/time_picker_switch" />
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="?attr/colorPrimaryDark"
+            android:text="Save"
+            android:textAllCaps="true"
+            app:layout_constraintTop_toBottomOf="@id/reminder_time_picker" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
