@@ -20,12 +20,17 @@
 
     <!--    Item Colors    -->
     <color name="engineering_red">#D00000</color>
+    <color name="delete_red">#d11a2a</color>
     <color name="selective_yellow">#ffba08</color>
+    <color name="light_coral">#ED9390</color>
+    <color name="pistachio">#90BE6D</color>
+    <color name="desert_sand">#F3D58E</color>
     <color name="steel_blue">#3f88C5</color>
     <color name="mantis_green">#71B340</color>
     <color name="syracuse_orange">#D45113</color>
     <color name="turquoise">#4CE0D2</color>
     <color name="tang_blue">#2B59C3</color>
     <color name="mauve">#BAA5FF</color>
+    <color name="orange">#FCAB10</color>
 
 </resources>

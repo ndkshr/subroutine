@@ -50,37 +50,16 @@
             tools:itemCount="4"
             tools:listitem="@layout/color_picker_item" />
 
-        <TextView
-            android:id="@+id/time_picker_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Pick a time for reminder"
-            android:textColor="?attr/colorPrimaryDark"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/time_picker_switch"
-            app:layout_constraintTop_toTopOf="@id/time_picker_switch" />
-
-        <com.google.android.material.materialswitch.MaterialSwitch
-            android:checked="true"
-            app:layout_constraintTop_toBottomOf="@id/labels_rv"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/time_picker_switch"
-            app:thumbTint="?attr/colorPrimaryDark"
-            app:trackTint="?attr/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TimePicker
-            android:id="@+id/reminder_time_picker"
+        <Button
+            android:id="@+id/time_picker_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/rich_dark"
             android:layout_marginTop="10dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:numbersBackgroundColor="?attr/colorPrimary"
-            android:numbersSelectorColor="?attr/colorPrimaryDark"
-            app:layout_constraintTop_toBottomOf="@id/time_picker_switch" />
+            android:text="Pick a time for daily reminder"
+            android:textColor="?attr/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@id/labels_rv"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/save"
@@ -90,7 +69,7 @@
             android:backgroundTint="?attr/colorPrimaryDark"
             android:text="Save"
             android:textAllCaps="true"
-            app:layout_constraintTop_toBottomOf="@id/reminder_time_picker" />
+            app:layout_constraintTop_toBottomOf="@id/time_picker_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

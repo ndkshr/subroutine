@@ -67,8 +67,8 @@
             android:id="@+id/day1_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="15dp"
             android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="@id/day2_text"
             app:layout_constraintHorizontal_bias="0"
@@ -95,7 +95,6 @@
             android:id="@+id/day3_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/circle"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="@id/day1_text"
             app:layout_constraintEnd_toStartOf="@id/day4_text"
@@ -137,28 +136,43 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="@id/day1_text"
-            app:layout_constraintEnd_toStartOf="@id/day7_text"
+            app:layout_constraintEnd_toStartOf="@id/day7_card"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toEndOf="@id/day5_text"
             app:layout_constraintTop_toTopOf="@id/day1_text"
             tools:text="TUE\n23" />
 
-        <TextView
-            style="@style/DayText"
-            android:id="@+id/day7_text"
-            android:textStyle="bold"
+        <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.84"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="25dp"
-            android:textAlignment="center"
+            android:layout_height="wrap_content" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/day7_card"
             app:layout_constraintBottom_toBottomOf="@id/day1_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
+            android:layout_marginEnd="26dp"
+            app:cardCornerRadius="5dp"
+            android:backgroundTint="?attr/colorPrimaryInverse"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toEndOf="@id/day6_text"
             app:layout_constraintTop_toTopOf="@id/day1_text"
-            tools:text="MON\n22" />
+            android:layout_width="40dp"
+            android:layout_height="40dp" >
+            <TextView
+                android:id="@+id/day7_text"
+                style="@style/DayText"
+                android:textStyle="bold"
+                android:textColor="?attr/colorPrimaryDark"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                tools:text="MON\n22" />
+        </androidx.cardview.widget.CardView>
 
         <!--  END OF DAY ITEMS  -->
 
@@ -168,7 +182,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/day7_text"
+            app:layout_constraintTop_toBottomOf="@id/day7_card"
             tools:itemCount="5"
             tools:listitem="@layout/habit_item_view" />
 

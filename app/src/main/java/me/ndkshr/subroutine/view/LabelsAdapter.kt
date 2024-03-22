@@ -8,19 +8,48 @@ import me.ndkshr.subroutine.R
 import me.ndkshr.subroutine.databinding.ColorPickerItemBinding
 import me.ndkshr.subroutine.modal.HabitLabels
 
-class LabelsAdapter: RecyclerView.Adapter<LabelsAdapter.ColorItemVH>() {
+class LabelsAdapter : RecyclerView.Adapter<LabelsAdapter.ColorItemVH>() {
 
     var colors: List<HabitLabels> = emptyList()
+    var selectedLabel: HabitLabels = HabitLabels.OUTCOME
 
-    class ColorItemVH(private val binding: ColorPickerItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ColorItemVH(private val binding: ColorPickerItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(label: HabitLabels) {
             binding.labelText.text = label.name
-            binding.labelParent.setCardBackgroundColor(
-                AppCompatResources.getColorStateList(
-                    binding.root.context,
-                    R.color.driftwood_yellow
-                )
+            binding.labelParent.backgroundTintList =
+                if (selectedLabel == label) {
+                    AppCompatResources.getColorStateList(
+                        binding.root.context,
+                        R.color.selective_yellow
+                    )
+                } else {
+                    AppCompatResources.getColorStateList(
+                        binding.root.context,
+                        R.color.rich_dark
+                    )
+                }
+
+            binding.labelText.setTextColor(
+                if (selectedLabel == label) {
+                    AppCompatResources.getColorStateList(
+                        binding.root.context,
+                        R.color.rich_dark
+                    )
+                } else {
+                    AppCompatResources.getColorStateList(
+                        binding.root.context,
+                        R.color.selective_yellow
+                    )
+                }
             )
+
+
+            binding.root.setOnClickListener {
+                notifyItemChanged(HabitLabels.entries.indexOf(selectedLabel))
+                selectedLabel = label
+                notifyItemChanged(HabitLabels.entries.indexOf(selectedLabel))
+            }
         }
     }
 
@@ -36,5 +65,9 @@ class LabelsAdapter: RecyclerView.Adapter<LabelsAdapter.ColorItemVH>() {
 
     override fun onBindViewHolder(holder: ColorItemVH, position: Int) {
         holder.bind(colors[position])
+    }
+
+    interface LabelInteraction {
+        fun labelSelected(label: HabitLabels)
     }
 }

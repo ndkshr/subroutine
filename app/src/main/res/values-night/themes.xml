@@ -8,5 +8,7 @@
         <item name="android:colorBackground">@color/lunar_green</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="android:textColor">?attr/colorPrimaryDark</item>
+
+        <item name="colorOnSurface">?attr/colorPrimaryDark</item>
     </style>
 </resources>

@@ -5,9 +5,12 @@
         <item name="colorPrimary">@color/vintage_beige</item>
         <item name="colorOnPrimary">@color/bombay_white</item>
         <item name="colorPrimaryDark">@color/rich_dark</item>
+        <item name="colorPrimaryInverse">@color/desert_sand</item>
         <item name="android:colorBackground">@color/coral_reef</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="android:textColor">?attr/colorPrimaryDark</item>
+
+        <item name="colorOnSurface">?attr/colorPrimaryDark</item>
     </style>
 
     <style name="Theme.Subroutine" parent="Base.Theme.Subroutine" />

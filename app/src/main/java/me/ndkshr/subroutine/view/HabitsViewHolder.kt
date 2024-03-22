@@ -1,83 +1,101 @@
 package me.ndkshr.subroutine.view
 
 import android.graphics.drawable.Drawable
-import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import me.ndkshr.subroutine.R
 import me.ndkshr.subroutine.databinding.HabitItemViewBinding
+import me.ndkshr.subroutine.modal.DailyTaskDataItem
 import me.ndkshr.subroutine.modal.HabitViewItem
-import me.ndkshr.subroutine.modal.TaskCheckViewItem
+import me.ndkshr.subroutine.utlis.gone
 
 class HabitsViewHolder(
     private val binding: HabitItemViewBinding,
-    private val onCheckChangeListener: CheckChangeListener
+    private val onInteractionListener: InteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(habit: HabitViewItem) {
         binding.apply {
-            habitName.text = habit.habitInfo.habitName
+            habitName.text = habit.habitData.habitName
             var i = 0
+
+            if (habit.days.isEmpty()) {
+                day1.gone()
+                day2.gone()
+                day3.gone()
+                day4.gone()
+                day5.gone()
+                day6.gone()
+                day7Bg.gone()
+                return@apply
+            }
+
             day1.setImageDrawable(getRadioDrawable(habit.days[i++]))
             day1.setOnClickListener {
-                onChanged(it as ImageView, habit.days[1])
+                onChanged(it as ImageView, habit.days[0], habit)
             }
 
             day2.setImageDrawable(getRadioDrawable(habit.days[i++]))
             day2.setOnClickListener {
-                onChanged(it as ImageView, habit.days[1])
+                onChanged(it as ImageView, habit.days[1], habit)
             }
 
             day3.setImageDrawable(getRadioDrawable(habit.days[i++]))
             day3.setOnClickListener {
-                onChanged(it as ImageView, habit.days[2])
+                onChanged(it as ImageView, habit.days[2], habit)
             }
 
             day4.setImageDrawable(getRadioDrawable(habit.days[i++]))
             day4.setOnClickListener {
-                onChanged(it as ImageView, habit.days[3])
+                onChanged(it as ImageView, habit.days[3], habit)
             }
 
             day5.setImageDrawable(getRadioDrawable(habit.days[i++]))
             day5.setOnClickListener {
-                onChanged(it as ImageView, habit.days[4])
+                onChanged(it as ImageView, habit.days[4], habit)
             }
 
             day6.setImageDrawable(getRadioDrawable(habit.days[i++]))
             day6.setOnClickListener {
-                onChanged(it as ImageView, habit.days[5])
+                onChanged(it as ImageView, habit.days[5], habit)
             }
 
             day7.setImageDrawable(getRadioDrawable(habit.days[i]))
             day7.setOnClickListener {
-                onChanged(it as ImageView, habit.days[6])
+                onChanged(it as ImageView, habit.days[6], habit)
             }
         }
-    }
 
-    private fun getRadioDrawable(item: TaskCheckViewItem): Drawable {
-        return if (item.checked) {
-            AppCompatResources.getDrawable(binding.root.context, R.drawable.check_circle)!!
-        } else {
-            AppCompatResources.getDrawable(binding.root.context, R.drawable.circle)!!
+        binding.root.setOnLongClickListener {
+            onInteractionListener.longClickMenu(habit)
+            false
         }
     }
 
-    private fun getRadioDrawableWithAnimation(item: TaskCheckViewItem): Drawable {
-        return if (item.checked) {
-            AppCompatResources.getDrawable(binding.root.context, R.drawable.check_circle)!!
+    private fun getRadioDrawable(dailyTaskItem: DailyTaskDataItem): Drawable {
+        return if (dailyTaskItem.dayStatus) {
+            AppCompatResources.getDrawable(binding.root.context, R.drawable.square_check)!!
         } else {
-            AppCompatResources.getDrawable(binding.root.context, R.drawable.circle)!!
+            AppCompatResources.getDrawable(binding.root.context, R.drawable.square)!!
         }
     }
 
-    private fun onChanged(view: ImageView, item: TaskCheckViewItem) {
-        item.checked = item.checked.not()
-        onCheckChangeListener.changed()
-        view.setImageDrawable(getRadioDrawableWithAnimation(item))
+    private fun getRadioDrawableWithAnimation(dailyTaskItem: DailyTaskDataItem): Drawable {
+        return if (dailyTaskItem.dayStatus) {
+            AppCompatResources.getDrawable(binding.root.context, R.drawable.square_check)!!
+        } else {
+            AppCompatResources.getDrawable(binding.root.context, R.drawable.square)!!
+        }
     }
 
-    interface CheckChangeListener {
-        fun changed()
+    private fun onChanged(view: ImageView, dailyTaskItem: DailyTaskDataItem, habit: HabitViewItem) {
+        dailyTaskItem.dayStatus = dailyTaskItem.dayStatus.not()
+        onInteractionListener.checkChanged(dailyTaskItem)
+        view.setImageDrawable(getRadioDrawableWithAnimation(dailyTaskItem))
+    }
+
+    interface InteractionListener {
+        fun checkChanged(dailyTaskItem: DailyTaskDataItem)
+        fun longClickMenu(habit: HabitViewItem)
     }
 }
