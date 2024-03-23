@@ -1,4 +1,4 @@
-package me.ndkshr.subroutine.modal
+package me.ndkshr.subroutine.modal.local
 
 import android.content.Context
 import androidx.room.Room

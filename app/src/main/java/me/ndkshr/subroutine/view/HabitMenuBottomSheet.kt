@@ -1,6 +1,8 @@
 package me.ndkshr.subroutine.view
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import me.ndkshr.subroutine.databinding.HabitMenuBottomSheetBinding
 import me.ndkshr.subroutine.modal.HabitViewItem
 import me.ndkshr.subroutine.viewmodel.MainActivityViewModel
 import me.ndkshr.subroutine.viewmodel.MainActivityViewModelFactory
+
 
 class HabitMenuBottomSheet(private val habit: HabitViewItem) : BottomSheetDialogFragment() {
 
@@ -31,13 +34,44 @@ class HabitMenuBottomSheet(private val habit: HabitViewItem) : BottomSheetDialog
         super.onViewCreated(view, savedInstanceState)
 
         binding.editBtn.setOnClickListener {
-            // show edit view
-            dismiss()
+            handleEdit()
+        }
+
+        binding.statsBtn.setOnClickListener {
+            showStats()
         }
 
         binding.deleteBtn.setOnClickListener {
-            viewModel.delete(habit.habitData)
-            dismiss()
+            handleDelete()
         }
+    }
+
+    private fun handleEdit() {
+        // show edit view
+        dismiss()
+    }
+
+    private fun showStats() {
+        // show stats activity
+        dismiss()
+    }
+
+    private fun handleDelete() {
+        val alertDialog = AlertDialog.Builder(requireActivity())
+            .setTitle("Are you sure you want to delete this habit?")
+            .setPositiveButton("Yes") { dialog, which ->
+                viewModel.delete(habit.habitData)
+                this.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, which ->
+                dialog.dismiss()
+            }.create()
+
+        alertDialog.setOnShowListener {
+            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.vintage_beige, null))
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.delete_red, null))
+        }
+
+        alertDialog.show()
     }
 }

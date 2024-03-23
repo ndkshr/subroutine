@@ -14,4 +14,8 @@
     </style>
 
     <style name="Theme.Subroutine" parent="Base.Theme.Subroutine" />
+
+    <style name="HabitTextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="colorPrimary">@color/rich_dark</item>
+    </style>
 </resources>

@@ -3,9 +3,9 @@ package me.ndkshr.subroutine.modal.local
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
-import me.ndkshr.subroutine.modal.DailyTaskDao
+import me.ndkshr.subroutine.modal.local.DailyTaskDao
 import me.ndkshr.subroutine.modal.DailyTaskDataItem
-import me.ndkshr.subroutine.modal.HabitDao
+import me.ndkshr.subroutine.modal.local.HabitDao
 import me.ndkshr.subroutine.modal.HabitDataItem
 import me.ndkshr.subroutine.modal.IRepository
 
@@ -18,9 +18,13 @@ class LocalRepositoryImpl(
             habitDao.getAll()
         }
 
+    override suspend fun getAllTasks(): List<DailyTaskDataItem> = withContext(Dispatchers.IO){
+        dailyTaskDao.getAll()
+    }
+
     override suspend fun getDailyTasksForHabit(habit: HabitDataItem): List<DailyTaskDataItem> =
         withContext(Dispatchers.IO) {
-            return@withContext dailyTaskDao.getAllByHabit(habit.habitId)
+            dailyTaskDao.getAllByHabit(habit.habitId)
         }
 
     override suspend fun insertHabit(habit: HabitDataItem) =

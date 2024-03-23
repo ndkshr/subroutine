@@ -1,10 +1,11 @@
-package me.ndkshr.subroutine.modal
+package me.ndkshr.subroutine.modal.local
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import me.ndkshr.subroutine.modal.DailyTaskDataItem
 
 @Dao
 interface DailyTaskDao {

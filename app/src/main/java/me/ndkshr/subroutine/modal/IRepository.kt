@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.Flow
 interface IRepository {
     suspend fun getAllHabits(): Flow<List<HabitDataItem>>
 
+    suspend fun getAllTasks(): List<DailyTaskDataItem>
+
     suspend fun getDailyTasksForHabit(habit: HabitDataItem): List<DailyTaskDataItem>
 
     suspend fun insertHabit(habit: HabitDataItem)

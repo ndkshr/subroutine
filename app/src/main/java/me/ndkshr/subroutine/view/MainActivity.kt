@@ -12,6 +12,8 @@ import me.ndkshr.subroutine.databinding.ActivityMainBinding
 import me.ndkshr.subroutine.modal.DailyTaskDataItem
 import me.ndkshr.subroutine.modal.HabitDataItem
 import me.ndkshr.subroutine.modal.HabitViewItem
+import me.ndkshr.subroutine.utlis.gone
+import me.ndkshr.subroutine.utlis.visible
 import me.ndkshr.subroutine.viewmodel.MainActivityViewModel
 import me.ndkshr.subroutine.viewmodel.MainActivityViewModelFactory
 import java.text.SimpleDateFormat
@@ -29,31 +31,27 @@ class MainActivity : AppCompatActivity(), HabitsViewHolder.InteractionListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        binding.progress.visible()
+
         setDateView()
         binding.addButton.setOnClickListener {
             AddHabitBottomSheetFragment().show(supportFragmentManager, AddHabitBottomSheetFragment::class.simpleName)
         }
 
-        viewModel.habits.observe(this) {
-            habitsAdapter.list.clear()
-            it.forEach { habit ->
-                habitsAdapter.list.add(habit)
-                viewModel.getLastWeekTasks(habit)
+        viewModel.habitsDataUpdated.observe(this) { updated ->
+            if (updated){
+                habitsAdapter.list = viewModel.habitTasksMap.keys.toMutableList()
+                habitsAdapter.notifyDataSetChanged()
+                binding.progress.gone()
             }
-            Handler(mainLooper).postDelayed({
-                initHabitsRv()
-            }, 1000)
         }
+
+        initHabitsRv()
     }
 
     private fun initHabitsRv() {
         binding.habitsRv.layoutManager = LinearLayoutManager(this)
         binding.habitsRv.adapter = habitsAdapter
-
-        viewModel.habitsDataUpdated.observe(this) {
-            habitsAdapter.list = viewModel.habits.value?.toMutableList() ?: mutableListOf()
-            habitsAdapter.notifyDataSetChanged()
-        }
     }
 
     private fun setDateView() {
