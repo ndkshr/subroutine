@@ -1,10 +1,15 @@
 package me.ndkshr.subroutine.view
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import me.ndkshr.subroutine.R
@@ -33,6 +38,8 @@ class MainActivity : AppCompatActivity(), HabitsViewHolder.InteractionListener {
 
         binding.progress.visible()
 
+        handlePermissions()
+
         setDateView()
         binding.addButton.setOnClickListener {
             AddHabitBottomSheetFragment().show(supportFragmentManager, AddHabitBottomSheetFragment::class.simpleName)
@@ -47,6 +54,14 @@ class MainActivity : AppCompatActivity(), HabitsViewHolder.InteractionListener {
         }
 
         initHabitsRv()
+    }
+
+    private fun handlePermissions() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 100)
+            }
+        }
     }
 
     private fun initHabitsRv() {

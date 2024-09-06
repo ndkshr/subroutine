@@ -3,9 +3,7 @@ package me.ndkshr.subroutine.modal.local
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
-import me.ndkshr.subroutine.modal.local.DailyTaskDao
 import me.ndkshr.subroutine.modal.DailyTaskDataItem
-import me.ndkshr.subroutine.modal.local.HabitDao
 import me.ndkshr.subroutine.modal.HabitDataItem
 import me.ndkshr.subroutine.modal.IRepository
 
@@ -24,7 +22,7 @@ class LocalRepositoryImpl(
 
     override suspend fun getDailyTasksForHabit(habit: HabitDataItem): List<DailyTaskDataItem> =
         withContext(Dispatchers.IO) {
-            dailyTaskDao.getAllByHabit(habit.habitId)
+            dailyTaskDao.getAllByHabit(habit.habitUUID)
         }
 
     override suspend fun insertHabit(habit: HabitDataItem) =
@@ -50,7 +48,7 @@ class LocalRepositoryImpl(
 
     override suspend fun deleteDailyTasksForHabit(habit: HabitDataItem) =
         withContext(Dispatchers.IO) {
-            dailyTaskDao.deleteHabitTasks(habit.habitId)
+            dailyTaskDao.deleteHabitTasks(habit.habitUUID)
         }
 
 }

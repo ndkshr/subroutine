@@ -1,8 +1,11 @@
 package me.ndkshr.subroutine.view
 
+import android.app.AlarmManager
 import android.app.AlertDialog
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +15,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import me.ndkshr.subroutine.R
 import me.ndkshr.subroutine.databinding.HabitMenuBottomSheetBinding
 import me.ndkshr.subroutine.modal.HabitViewItem
+import me.ndkshr.subroutine.notification.AlarmReceiver
+import me.ndkshr.subroutine.notification.HABIT_ITEM
 import me.ndkshr.subroutine.viewmodel.MainActivityViewModel
 import me.ndkshr.subroutine.viewmodel.MainActivityViewModelFactory
 
@@ -37,8 +42,8 @@ class HabitMenuBottomSheet(private val habit: HabitViewItem) : BottomSheetDialog
             handleEdit()
         }
 
-        binding.statsBtn.setOnClickListener {
-            showStats()
+        binding.cancelReminder.setOnClickListener {
+            cancelReminder()
         }
 
         binding.deleteBtn.setOnClickListener {
@@ -51,8 +56,18 @@ class HabitMenuBottomSheet(private val habit: HabitViewItem) : BottomSheetDialog
         dismiss()
     }
 
-    private fun showStats() {
-        // show stats activity
+    private fun cancelReminder() {
+        val intent = Intent(requireContext(), AlarmReceiver::class.java)
+        intent.putExtra(HABIT_ITEM, habit.habitData)
+        val pendingIntent = PendingIntent.getBroadcast(
+            requireContext(),
+            habit.habitData.id,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.cancel(pendingIntent)
         dismiss()
     }
 

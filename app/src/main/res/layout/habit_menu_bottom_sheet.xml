@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -46,7 +47,7 @@
             android:layout_height="1dp" />
 
         <LinearLayout
-            android:id="@+id/stats_btn"
+            android:id="@+id/cancel_reminder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foreground="?android:attr/selectableItemBackground"
@@ -58,13 +59,43 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="15dp"
+                android:src="@drawable/timer_off" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:text="Cancel Reminder"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
+        <View
+            android:background="@color/salt_box_purple"
+            android:alpha="0.4"
+            android:layout_marginHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <LinearLayout
+            android:id="@+id/stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:src="@drawable/area_chart" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
-                android:text="Statistics"
+                android:text="View Stats"
                 android:textAllCaps="true" />
         </LinearLayout>
 

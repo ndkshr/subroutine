@@ -30,7 +30,7 @@ class MainActivityViewModel(
     fun getAllHabits() = viewModelScope.launch {
         localRepo.getAllHabits().collect {
             it.forEach { habit ->
-                habitTasksMap[habit.habitId] = HabitViewItem(habit, mutableListOf())
+                habitTasksMap[habit.habitUUID] = HabitViewItem(habit, mutableListOf())
             }
             delay(1000)
             getLastWeekTasks()
@@ -64,7 +64,7 @@ class MainActivityViewModel(
         for (index in 1 until (max + 1)) {
             localRepo.insertDailyTask(
                 DailyTaskDataItem(
-                    habitId = habit.habitId,
+                    habitId = habit.habitUUID,
                     dayTs = day.toString().split("T")[0],
                     dayStatus = false,
                 )
@@ -78,7 +78,7 @@ class MainActivityViewModel(
     }
 
     fun delete(habit: HabitDataItem) = viewModelScope.launch {
-        habitTasksMap.remove(habit.habitId)
+        habitTasksMap.remove(habit.habitUUID)
         localRepo.deleteHabit(habit)
     }
 }
